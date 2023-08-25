@@ -114,8 +114,8 @@ pub struct AppleScript {
 
 impl AppleScript {
     /// Creates a new script from the given code.
-    pub fn new(code: &str) -> JavaScript {
-        JavaScript {
+    pub fn new(code: &str) -> AppleScript{
+        AppleScript {
             code: code.to_string(),
         }
     }
