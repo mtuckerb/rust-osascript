@@ -120,16 +120,11 @@ impl AppleScript {
         }
     }
 
-    /// Executes the script and does not pass any arguments.
-    pub fn execute<'a, D: DeserializeOwned>(&self) -> Result<D, Error> {
-        self.execute_with_params(EmptyParams {})
-    }
-
     /// Executes the script and passes the provided arguments.
-    pub fn execute_with_params<'a, S: Serialize, D: DeserializeOwned>(&self, params: S)
+    pub fn execute<'a, D: DeserializeOwned>(&self )
     -> Result<D, Error>
     {
-        let wrapped_code = wrap_code(&self.code, params)?;
+        let wrapped_code = &self.code;
         let output = process::Command::new("osascript")
             .arg("-l")
             .arg("AppleScript")
